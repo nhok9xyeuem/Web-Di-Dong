@@ -1,6 +1,5 @@
 package nhuconghaui.webdidong;
 
-import nhuconghaui.webdidong.repository.UserRepository;
 import nhuconghaui.webdidong.service.RoleService;
 import nhuconghaui.webdidong.service.UserService;
 import nhuconghaui.webdidong.service.impl.RoleServiceImpl;
