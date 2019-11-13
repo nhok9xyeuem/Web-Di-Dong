@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -36,13 +37,24 @@ public class ApiUserController {
     @RequestMapping(value = "/api/view/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getCustomer(@PathVariable("id") Long id) {
         User user = userService.findById(id);
-        if (user==null) {
+        if (user == null) {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
-
+//    @PostMapping(value = "api/login" )
+//    public ResponseEntity<User> post(@ModelAttribute User user){
+//        Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+//
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+//        String jwt = jwtService.generateTokenLogin(authentication);
+//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//
+//        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+//    }
 
 
     @RequestMapping(value = "/api/create", method = RequestMethod.POST)
